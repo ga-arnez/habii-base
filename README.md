@@ -38,7 +38,6 @@ Dentro do repositório do projeto, rode `/habii-core:habii-setup`. A skill cria:
 - `tdd`, `grill-with-docs` (+ `grilling` e `domain-modeling`, das quais ele depende) — mattpocock/skills
 - `frontend-design` — anthropics/skills
 - `agent-browser` — vercel-labs/agent-browser (requer o binário `agent-browser` instalado)
-- `token-efficiency` — delphine-l/claude_global
 
 **Agents**
 - `reviewer` — revisa o diff em contexto limpo contra o SPEC; só corretude e requisitos.

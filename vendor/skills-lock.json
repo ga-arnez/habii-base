@@ -36,12 +36,6 @@
       "sourceType": "github",
       "skillPath": "skills/engineering/tdd/SKILL.md",
       "computedHash": "daf55026f456af104a72fa43247f7bcec89e5127316dc5b1b8d675d6a9d8ce94"
-    },
-    "token-efficiency": {
-      "source": "delphine-l/claude_global",
-      "sourceType": "github",
-      "skillPath": "skills/claude-meta/token-efficiency/SKILL.md",
-      "computedHash": "94754a40b57e4099db737663b50ca9e0eeb4244bed4c3caf4ee6727bb81c8f64"
     }
   }
 }

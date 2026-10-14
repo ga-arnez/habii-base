@@ -9,10 +9,12 @@ https://github.com/mattpocock/skills grilling
 https://github.com/mattpocock/skills domain-modeling
 https://github.com/anthropics/skills frontend-design
 https://github.com/vercel-labs/agent-browser agent-browser
-https://github.com/delphine-l/claude_global token-efficiency
 
 # Fora por decisão (descomente para incluir):
 # grill-me: sobrepõe grill-with-docs e disputa o acionamento.
 # https://github.com/mattpocock/skills grill-me
 # caveman: economiza saída, mas deixa as explicações telegráficas; melhor como opt-in pessoal.
 # https://github.com/juliusbrussee/caveman caveman
+# token-efficiency: ~4k tokens por uso, descrição genérica que dispara quase sempre
+# e recomenda bash em vez de ler arquivos, contrariando o padrão do Claude Code.
+# https://github.com/delphine-l/claude_global token-efficiency
