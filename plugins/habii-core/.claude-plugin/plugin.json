@@ -1,0 +1,10 @@
+{
+  "name": "habii-core",
+  "displayName": "Habii Core",
+  "description": "Base comum da Habii Tech: fluxo de trabalho, TDD, entrevista com ADRs, revisor de diff e gate de verificação no Stop.",
+  "author": {
+    "name": "Habii Tech"
+  },
+  "repository": "https://github.com/ga-arnez/habii-base",
+  "keywords": ["habii", "workflow", "tdd", "verification"]
+}

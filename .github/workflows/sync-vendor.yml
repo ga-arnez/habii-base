@@ -1,0 +1,40 @@
+name: Sync vendored skills
+
+on:
+  schedule:
+    - cron: "17 10 * * 1" # segundas, 07:17 em Brasília
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Sincronizar skills de terceiros
+        run: ./scripts/sync-vendor.sh
+
+      - name: Validar marketplace
+        run: npx -y @anthropic-ai/claude-code plugin validate .
+
+      # Abre PR em vez de commitar direto: skill de terceiro é instrução que o Claude obedece,
+      # então toda mudança upstream passa por revisão humana antes de chegar a quem usa o plugin.
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: chore/sync-vendored-skills
+          commit-message: "chore(vendor): sincroniza skills de terceiros"
+          title: "chore(vendor): atualização das skills de terceiros"
+          body: |
+            Atualização automática das skills listadas em `vendor/skills.txt`.
+
+            **Revise o diff com atenção** — estas instruções passam a valer para todos que usam o `habii-core`.
+          labels: vendor
+          delete-branch: true

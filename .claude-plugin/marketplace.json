@@ -1,0 +1,14 @@
+{
+  "name": "habii",
+  "description": "Harness da Habii Tech para Claude Code: base comum e plugins por stack.",
+  "owner": {
+    "name": "Habii Tech"
+  },
+  "plugins": [
+    {
+      "name": "habii-core",
+      "source": "./plugins/habii-core",
+      "description": "Base comum: fluxo de trabalho Habii, TDD, entrevista com ADRs, revisor de diff e gate de verificação no Stop."
+    }
+  ]
+}

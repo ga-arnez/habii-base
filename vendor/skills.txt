@@ -1,0 +1,18 @@
+# Skills de terceiros vendorizadas no habii-core.
+# Formato: <repo-url> <nome-da-skill>
+# Rode scripts/sync-vendor.sh depois de editar. Linhas com # ficam de fora.
+
+https://github.com/mattpocock/skills tdd
+https://github.com/mattpocock/skills grill-with-docs
+# grill-with-docs só chama estas duas; sem elas ele quebra:
+https://github.com/mattpocock/skills grilling
+https://github.com/mattpocock/skills domain-modeling
+https://github.com/anthropics/skills frontend-design
+https://github.com/vercel-labs/agent-browser agent-browser
+https://github.com/delphine-l/claude_global token-efficiency
+
+# Fora por decisão (descomente para incluir):
+# grill-me: sobrepõe grill-with-docs e disputa o acionamento.
+# https://github.com/mattpocock/skills grill-me
+# caveman: economiza saída, mas deixa as explicações telegráficas; melhor como opt-in pessoal.
+# https://github.com/juliusbrussee/caveman caveman

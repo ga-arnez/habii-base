@@ -1,0 +1,13 @@
+{
+  "extraKnownMarketplaces": {
+    "habii": {
+      "source": {
+        "source": "github",
+        "repo": "ga-arnez/habii-base"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "habii-core@habii": true
+  }
+}
