@@ -8,6 +8,7 @@
     }
   },
   "enabledPlugins": {
-    "habii-core@habii": true
+    "habii-core@habii": true,
+    "context7@claude-plugins-official": true
   }
 }

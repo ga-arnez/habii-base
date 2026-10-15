@@ -19,6 +19,11 @@
       "name": "habii-mobile",
       "source": "./plugins/habii-mobile",
       "description": "React Native com Expo: performance, testes, navegação e simulador. Depende do habii-core."
+    },
+    {
+      "name": "habii-rails",
+      "source": "./plugins/habii-rails",
+      "description": "Rails + graphql-ruby: convenções de schemas, mutations, actions e specs da Habii. Depende do habii-core."
     }
   ]
 }

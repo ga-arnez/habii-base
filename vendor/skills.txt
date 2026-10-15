@@ -12,8 +12,7 @@ habii-core https://github.com/mattpocock/skills domain-modeling
 habii-core https://github.com/apollographql/skills graphql-schema
 habii-core https://github.com/apollographql/skills graphql-operations
 
-# Cliente GraphQL (React) — web e mobile
-habii-ts,habii-mobile https://github.com/apollographql/skills apollo-client
+# Cliente GraphQL: skill própria habii-apollo-client no core (cobre Apollo 3.x e 4.x).
 
 # habii-ts — TypeScript full-stack (React + Fastify + Prisma)
 habii-ts https://github.com/vercel-labs/agent-skills vercel-react-best-practices
@@ -36,6 +35,10 @@ habii-mobile https://github.com/callstack/react-native-testing-library react-nat
 habii-mobile https://github.com/callstackincubator/agent-skills react-navigation
 habii-mobile https://github.com/callstackincubator/agent-device agent-device
 
+# habii-rails — Rails + graphql-ruby (convenções próprias na skill habii-rails)
+habii-rails https://github.com/igmarin/rails-agent-skills optimize-performance
+habii-rails https://github.com/igmarin/rails-agent-skills security-check
+
 # Fora por decisão (descomente para incluir):
 # grill-me: sobrepõe grill-with-docs e disputa o acionamento.
 # habii-core https://github.com/mattpocock/skills grill-me
@@ -52,3 +55,12 @@ habii-mobile https://github.com/callstackincubator/agent-device agent-device
 # habii-mobile https://github.com/callstackincubator/agent-skills upgrading-react-native
 # apollo-server: o servidor GraphQL do time é Rails (graphql-ruby), não Apollo Server.
 # habii-ts https://github.com/apollographql/skills apollo-server
+# apollo-client: escrita para Apollo Client 4.x; a maioria dos apps está na 3.x. Substituída por habii-apollo-client.
+# habii-ts,habii-mobile https://github.com/apollographql/skills apollo-client
+# implement-graphql: sobrepõe habii-rails e diverge (errors null: false, services com .call).
+# habii-rails https://github.com/igmarin/rails-agent-skills implement-graphql
+# layered-rails: 455 KB e description ampla ("Rails best practices", "service object") que disputa com habii-rails.
+# habii-rails https://github.com/palkan/skills layered-rails
+# review-migration / implement-background-job: avaliadas, fora por decisão.
+# habii-rails https://github.com/igmarin/rails-agent-skills review-migration
+# habii-rails https://github.com/igmarin/rails-agent-skills implement-background-job

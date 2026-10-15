@@ -1,0 +1,10 @@
+{
+  "name": "habii-rails",
+  "displayName": "Habii Rails",
+  "description": "Stack Rails da Habii Tech: convenções de API GraphQL (graphql-ruby + Doorkeeper), actions, specs com RSpec/FactoryBot. Use junto com o habii-core.",
+  "author": {
+    "name": "Habii Tech"
+  },
+  "repository": "https://github.com/ga-arnez/habii-base",
+  "keywords": ["habii", "rails", "graphql", "rspec"]
+}

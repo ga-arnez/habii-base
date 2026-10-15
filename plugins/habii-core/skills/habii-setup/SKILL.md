@@ -24,10 +24,11 @@ Create it from `templates/verify.sh` with the commands verified in step 1, and `
 Run the script once. If the project is already red (legacy), tell the user and agree on a path: fix it first, or start with a narrower verify.sh.
 
 ## 4. .claude/settings.json
-Ensure (merging with whatever exists) the entries from `templates/settings.json`. In `enabledPlugins`, always enable `habii-core@habii` and add the plugins for the detected stack that already exist in the marketplace:
+Ensure (merging with whatever exists) the entries from `templates/settings.json`. In `enabledPlugins`, always enable `habii-core@habii` and `context7@claude-plugins-official` (version-specific library docs; each person authenticates on first use), and add the plugins for the detected stack that already exist in the marketplace:
+- Rails → `habii-rails@habii`
 - TypeScript (React web and/or Fastify) → `habii-ts@habii`
 - Expo → `habii-mobile@habii`, plus Expo's official plugin: add to `extraKnownMarketplaces` the entry `"expo-plugins": { "source": { "source": "github", "repo": "expo/skills" } }` and enable `expo@expo-plugins`
-- Monorepo with both (e.g. Expo app + Fastify API) → enable all of them
+- Monorepo with more than one (e.g. Expo app + Rails API) → enable all of them
 
 ## 5. Library skills (TanStack Intent)
 If `package.json` (any workspace) depends on `@trpc/*` or `@tanstack/*`, run `npx @tanstack/intent@latest install` at the root. Those libraries ship their skills inside the npm package, so the guidance matches the installed version; do not vendor them. Show the user the resulting diff.

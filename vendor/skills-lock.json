@@ -13,12 +13,6 @@
       "skillPath": "skills/agent-device/SKILL.md",
       "computedHash": "3187ae73a1a8b055e20630d64c86e5bb7576341b495c9a755f5e3ec7927c0302"
     },
-    "apollo-client": {
-      "source": "apollographql/skills",
-      "sourceType": "github",
-      "skillPath": "skills/apollo-client/SKILL.md",
-      "computedHash": "008c067a3d480ab905aa37aab113b8dc54028e29e593610866b7ea8131377ce1"
-    },
     "domain-modeling": {
       "source": "mattpocock/skills",
       "sourceType": "github",
@@ -61,6 +55,12 @@
       "skillPath": "skills/productivity/grilling/SKILL.md",
       "computedHash": "ef1641a2047b71b60f1942cd35efb47d3afc9d584dff5a0b01f8c7db923aaa08"
     },
+    "optimize-performance": {
+      "source": "igmarin/rails-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/optimize-performance/SKILL.md",
+      "computedHash": "33b670162634112249e3b19396137b1ffd5a5dff76d0a6893a43cd077bba9089"
+    },
     "prisma-cli": {
       "source": "prisma/skills",
       "sourceType": "github",
@@ -90,6 +90,12 @@
       "sourceType": "github",
       "skillPath": "skills/react-navigation/SKILL.md",
       "computedHash": "f09111c137b0bac6e43ff5ff57297afc93ae51583797acf779733ace4d1ced60"
+    },
+    "security-check": {
+      "source": "igmarin/rails-agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/security-check/SKILL.md",
+      "computedHash": "31c1b42acea7e811c16975a58a27ba978c4d921529ba6ff9d934f8b9f0b7f578"
     },
     "shadcn": {
       "source": "shadcn-ui/ui",

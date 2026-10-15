@@ -23,6 +23,7 @@ Context is the most expensive resource. Everything here exists to keep it small 
 
 - Decide up front how you will know it worked: test, typecheck, build, screenshot.
 - New behavior or bug → `tdd`: failing test first, then the fix.
+- Library APIs: check the installed version in the lockfile first (projects run different majors of Apollo, Expo, Rails). If unsure how an API works in that version, look it up with Context7 for that version instead of relying on memory.
 - The project may have `.claude/verify.sh`; the Stop hook runs it and blocks finishing if it fails. Fix the root cause — never disable a check, never use `any`/`@ts-ignore`/`skip` to get it passing.
 
 ## 4. Prove, don't claim
