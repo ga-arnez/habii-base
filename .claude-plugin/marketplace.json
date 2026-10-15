@@ -9,6 +9,16 @@
       "name": "habii-core",
       "source": "./plugins/habii-core",
       "description": "Base comum: fluxo de trabalho Habii, TDD, entrevista com ADRs, revisor de diff e gate de verificação no Stop."
+    },
+    {
+      "name": "habii-ts",
+      "source": "./plugins/habii-ts",
+      "description": "TypeScript full-stack: React, shadcn, Fastify e Prisma. Depende do habii-core."
+    },
+    {
+      "name": "habii-mobile",
+      "source": "./plugins/habii-mobile",
+      "description": "React Native com Expo: performance, testes, navegação e simulador. Depende do habii-core."
     }
   ]
 }

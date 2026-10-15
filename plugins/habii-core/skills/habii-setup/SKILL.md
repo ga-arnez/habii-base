@@ -1,30 +1,36 @@
 ---
 name: habii-setup
-description: Prepara um repositório de projeto para o harness Habii — cria CLAUDE.md enxuto, .claude/verify.sh e registra o marketplace habii no .claude/settings.json. Use só quando o usuário pedir para configurar o projeto.
+description: Prepares a project repository for the Habii harness (configurar projeto, setup) — creates a lean CLAUDE.md, .claude/verify.sh and registers the habii marketplace in .claude/settings.json. Use only when the user asks to set up the project.
 disable-model-invocation: true
 ---
 
-# Setup de projeto Habii
+# Habii project setup
 
-Prepare o repositório atual em quatro passos. Não sobrescreva nada que já exista sem perguntar; quando um arquivo existir, proponha o diff.
+Prepare the current repository in the steps below. Do not overwrite anything that already exists without asking; when a file exists, propose the diff.
 
-## 1. Descubra a stack
-Inspecione a raiz: `turbo.json`/`pnpm-workspace.yaml` (Turborepo/TS), `Gemfile` com `rails` (Rails), `app.json`/`expo` no `package.json` (React Native). Descubra os comandos reais de typecheck, lint e teste lendo `package.json`, `turbo.json`, `Gemfile`, `bin/`.
+## 1. Detect the stack
+Inspect the root: `turbo.json`/`pnpm-workspace.yaml` (Turborepo/TS), `Gemfile` with `rails` (Rails), `expo` in `package.json` (React Native with Expo; also note whether it uses `expo-router` or `@react-navigation/*`). Find the real typecheck, lint and test commands by reading `package.json`, `turbo.json`, `Gemfile`, `bin/`.
 
 ## 2. CLAUDE.md
-Se não existir, crie a partir de `templates/CLAUDE.md` (nesta pasta da skill) preenchendo com o que você **verificou** no passo 1. Regras:
-- Menos de 200 linhas; ideal menos de 80.
-- Só o que o Claude não descobre lendo o código: comandos, peculiaridades de ambiente, decisões de arquitetura locais, armadilhas.
-- Nada de descrever arquivo por arquivo nem convenções óbvias da linguagem.
-- Notas para humanos em comentários HTML (`<!-- -->`), que não chegam ao contexto.
+If it does not exist, create it from `templates/CLAUDE.md` (in this skill's folder), filling it with what you **verified** in step 1. Rules:
+- Under 200 lines; ideally under 80.
+- Only what Claude cannot discover by reading the code: commands, environment quirks, local architecture decisions, pitfalls.
+- No file-by-file descriptions, no obvious language conventions.
+- Notes for humans go in HTML comments (`<!-- -->`), which do not reach the context.
 
 ## 3. .claude/verify.sh
-Crie a partir de `templates/verify.sh`, com os comandos verificados no passo 1, e `chmod +x`. É o "verde" do projeto: o hook Stop do habii-core o roda antes de o Claude encerrar. Deve ser **rápido** (segundos, não minutos): typecheck e lint do que mudou e testes unitários afetados; deixe e2e para o CI.
+Create it from `templates/verify.sh` with the commands verified in step 1, and `chmod +x` it. It is the project's "green": the habii-core Stop hook runs it before Claude finishes. It must be **fast** (seconds, not minutes): typecheck and lint of what changed plus affected unit tests; leave e2e to CI.
 
-Rode o script uma vez. Se o projeto já estiver vermelho (legado), avise o usuário e combine: corrigir antes, ou começar com um verify.sh mais estreito.
+Run the script once. If the project is already red (legacy), tell the user and agree on a path: fix it first, or start with a narrower verify.sh.
 
 ## 4. .claude/settings.json
-Garanta (fazendo merge com o que existir) as entradas de `templates/settings.json`, ligando em `enabledPlugins` só os plugins da stack detectada que já existirem no marketplace (hoje: `habii-core`).
+Ensure (merging with whatever exists) the entries from `templates/settings.json`. In `enabledPlugins`, always enable `habii-core@habii` and add the plugins for the detected stack that already exist in the marketplace:
+- TypeScript (React web and/or Fastify) → `habii-ts@habii`
+- Expo → `habii-mobile@habii`, plus Expo's official plugin: add to `extraKnownMarketplaces` the entry `"expo-plugins": { "source": { "source": "github", "repo": "expo/skills" } }` and enable `expo@expo-plugins`
+- Monorepo with both (e.g. Expo app + Fastify API) → enable all of them
 
-## Ao terminar
-Liste os arquivos criados/alterados e a saída da primeira execução do `verify.sh`. Lembre o usuário de commitar o `.claude/settings.json` e o `CLAUDE.md`, e de ligar o auto-update do marketplace em `/plugin` → Marketplaces.
+## 5. Library skills (TanStack Intent)
+If `package.json` (any workspace) depends on `@trpc/*` or `@tanstack/*`, run `npx @tanstack/intent@latest install` at the root. Those libraries ship their skills inside the npm package, so the guidance matches the installed version; do not vendor them. Show the user the resulting diff.
+
+## When done
+List the files created/changed and the output of the first `verify.sh` run. Remind the user to commit `.claude/settings.json` and `CLAUDE.md`, and to turn on marketplace auto-update in `/plugin` → Marketplaces.

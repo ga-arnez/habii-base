@@ -1,20 +1,54 @@
-# Skills de terceiros vendorizadas no habii-core.
-# Formato: <repo-url> <nome-da-skill>
+# Skills de terceiros vendorizadas nos plugins.
+# Formato: <plugin>[,<plugin>...] <repo-url> <nome-da-skill>
 # Rode scripts/sync-vendor.sh depois de editar. Linhas com # ficam de fora.
 
-https://github.com/mattpocock/skills tdd
-https://github.com/mattpocock/skills grill-with-docs
+# habii-core — agnóstico de stack
+habii-core https://github.com/mattpocock/skills tdd
+habii-core https://github.com/mattpocock/skills grill-with-docs
 # grill-with-docs só chama estas duas; sem elas ele quebra:
-https://github.com/mattpocock/skills grilling
-https://github.com/mattpocock/skills domain-modeling
-https://github.com/anthropics/skills frontend-design
-https://github.com/vercel-labs/agent-browser agent-browser
+habii-core https://github.com/mattpocock/skills grilling
+habii-core https://github.com/mattpocock/skills domain-modeling
+# GraphQL agnóstico de stack: desenho de schema e operações (web, mobile e Rails).
+habii-core https://github.com/apollographql/skills graphql-schema
+habii-core https://github.com/apollographql/skills graphql-operations
+
+# Cliente GraphQL (React) — web e mobile
+habii-ts,habii-mobile https://github.com/apollographql/skills apollo-client
+
+# habii-ts — TypeScript full-stack (React + Fastify + Prisma)
+habii-ts https://github.com/vercel-labs/agent-skills vercel-react-best-practices
+habii-ts https://github.com/vercel-labs/agent-skills vercel-composition-patterns
+habii-ts https://github.com/vercel-labs/agent-skills web-design-guidelines
+habii-ts https://github.com/anthropics/skills frontend-design
+habii-ts https://github.com/vercel-labs/agent-browser agent-browser
+habii-ts https://github.com/shadcn-ui/ui shadcn
+habii-ts https://github.com/mcollina/skills fastify-best-practices
+habii-ts https://github.com/prisma/skills prisma-client-api
+habii-ts https://github.com/prisma/skills prisma-cli
+# tRPC e TanStack Query não são vendorizados: as skills vêm dentro dos pacotes npm,
+# na versão instalada, via TanStack Intent (o habii-setup roda `npx @tanstack/intent@latest install`).
+
+# habii-mobile — React Native com Expo
+# As skills oficiais da Expo não são vendorizadas: o habii-setup liga o plugin `expo` do
+# marketplace oficial (expo/skills), mantido pela Expo.
+habii-mobile https://github.com/callstackincubator/agent-skills react-native-best-practices
+habii-mobile https://github.com/callstack/react-native-testing-library react-native-testing
+habii-mobile https://github.com/callstackincubator/agent-skills react-navigation
+habii-mobile https://github.com/callstackincubator/agent-device agent-device
 
 # Fora por decisão (descomente para incluir):
 # grill-me: sobrepõe grill-with-docs e disputa o acionamento.
-# https://github.com/mattpocock/skills grill-me
+# habii-core https://github.com/mattpocock/skills grill-me
 # caveman: economiza saída, mas deixa as explicações telegráficas; melhor como opt-in pessoal.
-# https://github.com/juliusbrussee/caveman caveman
+# habii-core https://github.com/juliusbrussee/caveman caveman
 # token-efficiency: ~4k tokens por uso, descrição genérica que dispara quase sempre
 # e recomenda bash em vez de ler arquivos, contrariando o padrão do Claude Code.
-# https://github.com/delphine-l/claude_global token-efficiency
+# habii-core https://github.com/delphine-l/claude_global token-efficiency
+# vercel-react-view-transitions: 14 KB e muito específica.
+# habii-ts https://github.com/vercel-labs/agent-skills vercel-react-view-transitions
+# vercel-react-native-skills: sobrepõe react-native-best-practices (Callstack) e disputa o acionamento.
+# habii-mobile https://github.com/vercel-labs/agent-skills vercel-react-native-skills
+# upgrading-react-native: para projetos bare; em Expo use expo-upgrade, do plugin expo.
+# habii-mobile https://github.com/callstackincubator/agent-skills upgrading-react-native
+# apollo-server: o servidor GraphQL do time é Rails (graphql-ruby), não Apollo Server.
+# habii-ts https://github.com/apollographql/skills apollo-server

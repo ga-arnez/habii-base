@@ -1,0 +1,10 @@
+{
+  "name": "habii-ts",
+  "displayName": "Habii TS",
+  "description": "Stack TypeScript full-stack da Habii Tech: React (performance, composição, design, shadcn, browser), Fastify e Prisma. Use junto com o habii-core.",
+  "author": {
+    "name": "Habii Tech"
+  },
+  "repository": "https://github.com/ga-arnez/habii-base",
+  "keywords": ["habii", "typescript", "react", "fastify", "prisma"]
+}

@@ -35,6 +35,6 @@ jobs:
           body: |
             Atualização automática das skills listadas em `vendor/skills.txt`.
 
-            **Revise o diff com atenção** — estas instruções passam a valer para todos que usam o `habii-core`.
+            **Revise o diff com atenção** — estas instruções passam a valer para todos que usam os plugins habii.
           labels: vendor
           delete-branch: true

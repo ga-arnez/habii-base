@@ -1,34 +1,40 @@
 ---
 name: habii-workflow
-description: Fluxo de trabalho padrão da Habii Tech para implementar features, corrigir bugs e refatorar — quando planejar, como verificar, quando delegar a subagentes e quando limpar o contexto. Use ao iniciar qualquer tarefa de código que mexa em mais de um arquivo.
+description: Habii Tech's standard workflow for implementing features, fixing bugs and refactoring (implementar feature, corrigir bug, refatorar) — when to plan, how to verify, when to delegate to subagents and when to clear context. Use when starting any coding task that touches more than one file.
 ---
 
-# Fluxo de trabalho Habii
+# Habii workflow
 
-O recurso mais caro é o contexto. Tudo aqui serve para mantê-lo pequeno e verificável.
+Context is the most expensive resource. Everything here exists to keep it small and verifiable.
 
-## 1. Dimensione a tarefa
-- **Dá para descrever o diff numa frase?** Faça direto, sem plano.
-- **Abordagem incerta, vários arquivos ou código desconhecido?** Explore e planeje antes (plan mode).
-- **Feature grande ou requisito ambíguo?** Use `grill-with-docs` para entrevistar o usuário, registre decisões em ADR e escreva um `SPEC.md`. Implemente numa sessão nova, partindo do SPEC.
+## 1. Size the task
 
-## 2. Explore sem poluir o contexto
-- Leitura ampla (muitos arquivos, logs, histórico) → delegue ao subagente `explorer` e trabalhe com o mapa que ele devolve.
-- Antes de criar algo, procure o padrão existente mais próximo no projeto e siga-o.
-- Leia `GLOSSARY.md` e ADRs em `docs/adr/` quando existirem; use o vocabulário do domínio.
+- **Can you describe the diff in one sentence?** Just do it, no plan.
+- **Uncertain approach, several files or unfamiliar code?** Explore and plan first (plan mode).
+- **Large feature or ambiguous requirement?** Use `grill-with-docs` to interview the user, record decisions in ADRs and write a `SPEC.md`. Implement in a fresh session, starting from the SPEC.
 
-## 3. Implemente contra uma verificação
-- Defina antes como saber que funcionou: teste, typecheck, build, screenshot.
-- Comportamento novo ou bug → `tdd`: teste falhando primeiro, depois a correção.
-- O projeto pode ter `.claude/verify.sh`; o hook Stop o roda e bloqueia o encerramento se falhar. Corrija a causa raiz — nunca desative checagem, nunca use `any`/`@ts-ignore`/`skip` para passar.
+## 2. Explore without polluting context
 
-## 4. Prove, não afirme
-Ao concluir, mostre a evidência: o comando que rodou e o resultado. "Deve funcionar" não é conclusão.
+- Broad reading (many files, logs, history) → delegate to the `explorer` subagent and work from the map it returns.
+- Before creating something, find the closest existing pattern in the project and follow it.
+- Read `GLOSSARY.md` and ADRs in `docs/adr/` when they exist; use the domain vocabulary.
 
-## 5. Revise em contexto limpo
-Mudança relevante → subagente `reviewer` contra o SPEC/plano. Corrija só o que afeta corretude ou requisitos; trate o resto como opcional.
+## 3. Implement against a check
 
-## 6. Higiene de sessão
-- Corrigiu a mesma coisa duas vezes e ainda está errado? Pare, resuma o que aprendeu e sugira `/clear` com um prompt melhor.
-- Tarefas não relacionadas → sessões separadas.
-- Prefira CLIs (`gh`, `turbo`, `pnpm`, `bin/rails`) a MCPs quando ambos servem.
+- Decide up front how you will know it worked: test, typecheck, build, screenshot.
+- New behavior or bug → `tdd`: failing test first, then the fix.
+- The project may have `.claude/verify.sh`; the Stop hook runs it and blocks finishing if it fails. Fix the root cause — never disable a check, never use `any`/`@ts-ignore`/`skip` to get it passing.
+
+## 4. Prove, don't claim
+
+When done, show the evidence: the command you ran and its result. "Should work" is not a conclusion.
+
+## 5. Review in a clean context
+
+Meaningful change → `reviewer` subagent against the SPEC/plan. Fix only what affects correctness or requirements; treat the rest as optional.
+
+## 6. Session hygiene
+
+- Fixed the same thing twice and it's still wrong? Stop, summarize what you learned and suggest `/clear` with a better prompt.
+- Unrelated tasks → separate sessions.
+- Prefer CLIs (`gh`, `turbo`, `pnpm`, `bin/rails`) over MCPs when both work.

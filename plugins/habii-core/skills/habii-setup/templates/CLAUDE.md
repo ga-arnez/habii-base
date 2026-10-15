@@ -1,26 +1,28 @@
-# <Nome do projeto>
+# <Project name>
 
-<!-- Template Habii. Mantenha abaixo de 80 linhas. Para cada linha, pergunte:
-     "removê-la faria o Claude errar?" Se não, corte. Comentários como este não chegam ao contexto. -->
+<!-- Habii template. Keep it under 80 lines. For each line, ask:
+     "would removing it make Claude get things wrong?" If not, cut it. Comments like this one do not reach the context. -->
 
-<Uma frase: o que o sistema faz e para quem.>
+<One sentence: what the system does and for whom.>
 
-## Comandos
-- Instalar: `<comando>`
-- Dev: `<comando>`
-- Typecheck: `<comando>`
-- Lint: `<comando>`
-- Teste de um arquivo: `<comando> <caminho>`
-- Verificação completa: `.claude/verify.sh`
+Always respond to the user in Brazilian Portuguese (pt-BR); code, identifiers and commits in English.
 
-## Arquitetura
-<!-- Só decisões locais que não aparecem lendo o código. Decisões maiores vão em docs/adr/. -->
-- <ex.: apps/api é Fastify + Zod; contratos compartilhados em packages/contracts>
-- <ex.: toda integração externa passa por packages/integrations; nunca chamar direto do app>
+## Commands
+- Install: `<command>`
+- Dev: `<command>`
+- Typecheck: `<command>`
+- Lint: `<command>`
+- Test a single file: `<command> <path>`
+- Full verification: `.claude/verify.sh`
 
-## Armadilhas
-- <ex.: variáveis de ambiente exigidas: DATABASE_URL, FOCUS_NFE_TOKEN>
-- <ex.: migrations Prisma só via `pnpm db:migrate`, nunca `prisma db push` em staging>
+## Architecture
+<!-- Only local decisions that are not visible from the code. Bigger decisions go in docs/adr/. -->
+- <e.g.: apps/api is Fastify + Zod; shared contracts in packages/contracts>
+- <e.g.: every external integration goes through packages/integrations; never call it directly from the app>
 
-## Ao compactar
-Preserve a lista de arquivos modificados e os comandos de teste usados.
+## Pitfalls
+- <e.g.: required env vars: DATABASE_URL, FOCUS_NFE_TOKEN>
+- <e.g.: Prisma migrations only via `pnpm db:migrate`, never `prisma db push` on staging>
+
+## When compacting
+Preserve the list of modified files and the test commands used.

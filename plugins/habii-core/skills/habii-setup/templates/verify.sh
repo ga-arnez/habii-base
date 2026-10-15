@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
-# Verificação rápida do projeto. Rodada pelo hook Stop do habii-core antes de o Claude encerrar.
-# Saída 0 = verde. Qualquer outra saída devolve o erro ao Claude para correção.
-# Mantenha em segundos: typecheck/lint/testes afetados. E2E fica no CI.
+# Fast project verification. Run by the habii-core Stop hook before Claude finishes.
+# Exit 0 = green. Any other exit returns the error to Claude to fix.
+# Keep it to seconds: typecheck/lint/affected tests. E2E stays in CI.
 set -euo pipefail
 
-# Exemplos — troque pelos comandos reais do projeto:
+# Examples — replace with the project's real commands:
 # Turborepo:   pnpm turbo run typecheck lint --filter='...[HEAD]'
 # Rails:       bundle exec rubocop --force-exclusion $(git diff --name-only HEAD -- '*.rb')
-# Testes:      pnpm turbo run test --filter='...[HEAD]'
+# Tests:       pnpm turbo run test --filter='...[HEAD]'
+# Expo:        npx tsc --noEmit && npx expo lint && npx jest --onlyChanged   (no native build: too slow)
 
 echo "TODO: configure .claude/verify.sh" >&2
 exit 0

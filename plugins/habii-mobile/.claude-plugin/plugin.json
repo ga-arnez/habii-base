@@ -1,0 +1,10 @@
+{
+  "name": "habii-mobile",
+  "displayName": "Habii Mobile",
+  "description": "Stack mobile da Habii Tech: React Native com Expo — performance, testes com RNTL, React Navigation e controle do simulador. Use junto com o habii-core e o plugin oficial expo.",
+  "author": {
+    "name": "Habii Tech"
+  },
+  "repository": "https://github.com/ga-arnez/habii-base",
+  "keywords": ["habii", "react-native", "expo", "mobile"]
+}
