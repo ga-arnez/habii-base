@@ -29,7 +29,7 @@ Dentro do repositório do projeto, rode `/habii-core:habii-setup`. A skill cria:
 
 - `CLAUDE.md` enxuto a partir do template;
 - `.claude/verify.sh` com o "verde" do projeto (typecheck, lint, testes afetados);
-- `.claude/settings.json` registrando o marketplace e ligando os plugins (inclui o `context7` oficial, para documentação na versão instalada de cada lib; cada pessoa autentica no primeiro uso) — quem confiar na pasta recebe o convite de instalação automaticamente.
+- `.claude/settings.json` registrando o marketplace e ligando os plugins (inclui os oficiais `context7`, para documentação na versão instalada de cada lib — cada pessoa autentica no primeiro uso —, e `security-guidance`, que avisa sobre padrões inseguros nas edições e revisa o diff ao fim do turno) — quem confiar na pasta recebe o convite de instalação automaticamente.
 
 ## O que vem no habii-core
 
@@ -41,6 +41,7 @@ Dentro do repositório do projeto, rode `/habii-core:habii-setup`. A skill cria:
 **Skills de terceiros** (vendorizadas, ver abaixo)
 - `tdd`, `grill-with-docs` (+ `grilling` e `domain-modeling`, das quais ele depende) — mattpocock/skills
 - `graphql-schema` e `graphql-operations` — apollographql/skills: desenho de schema e escrita de operações, valem para web, mobile e Rails
+- `differential-review` e `sharp-edges` — trailofbits/skills: revisão de segurança do diff (com raio de impacto) e APIs/configurações fáceis de usar errado
 
 **Agents**
 - `reviewer` — revisa o diff em contexto limpo contra o SPEC; só corretude e requisitos.
@@ -56,6 +57,7 @@ Só skills de terceiros (vendorizadas):
 - **UI:** `frontend-design` — anthropics/skills; `shadcn` — shadcn-ui/ui
 - **Browser:** `agent-browser` — vercel-labs/agent-browser (requer o binário `agent-browser` instalado)
 - **Backend:** `fastify-best-practices` — mcollina/skills; `prisma-client-api` e `prisma-cli` (Prisma 7) — prisma/skills
+- **Segurança:** `supply-chain-risk-auditor` — trailofbits/skills: risco das dependências npm (requer `uv`; com `gh` autenticado evita o limite da API do GitHub)
 
 tRPC e TanStack Query **não** são vendorizados: as skills vêm dentro dos pacotes npm, na versão instalada. O `habii-setup` roda `npx @tanstack/intent@latest install` quando o projeto usa essas libs.
 
@@ -65,6 +67,7 @@ Só skills de terceiros (vendorizadas):
 - `react-native-best-practices` e `react-navigation` — callstackincubator/agent-skills
 - `react-native-testing` (React Native Testing Library) — callstack/react-native-testing-library
 - `agent-device` — callstackincubator/agent-device: controla simulador iOS/Android para o Claude provar a mudança (requer o binário `agent-device` instalado)
+- `supply-chain-risk-auditor` — trailofbits/skills: risco das dependências npm (requer `uv`)
 
 As skills oficiais da Expo (Router, EAS, upgrade, UI nativa…) **não** são vendorizadas: o `habii-setup` registra o marketplace `expo-plugins` (expo/skills) e liga o plugin `expo`, mantido pela própria Expo. Ele também traz o MCP `mcp.expo.dev`, que pede login na conta Expo.
 

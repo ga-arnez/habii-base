@@ -11,6 +11,11 @@ habii-core https://github.com/mattpocock/skills domain-modeling
 # GraphQL agnóstico de stack: desenho de schema e operações (web, mobile e Rails).
 habii-core https://github.com/apollographql/skills graphql-schema
 habii-core https://github.com/apollographql/skills graphql-operations
+# Segurança agnóstica de stack (Trail of Bits). O security-guidance oficial (hooks) é ligado pelo habii-setup.
+habii-core https://github.com/trailofbits/skills differential-review
+habii-core https://github.com/trailofbits/skills sharp-edges
+# Dependências npm: web e mobile.
+habii-ts,habii-mobile https://github.com/trailofbits/skills supply-chain-risk-auditor
 
 # Cliente GraphQL: skill própria habii-apollo-client no core (cobre Apollo 3.x e 4.x).
 
@@ -64,3 +69,4 @@ habii-rails https://github.com/igmarin/rails-agent-skills security-check
 # review-migration / implement-background-job: avaliadas, fora por decisão.
 # habii-rails https://github.com/igmarin/rails-agent-skills review-migration
 # habii-rails https://github.com/igmarin/rails-agent-skills implement-background-job
+# insecure-defaults (trailofbits/skills): virou plugin com comando + workflow, sem SKILL.md; não dá para vendorizar.
