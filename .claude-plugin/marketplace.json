@@ -8,7 +8,7 @@
     {
       "name": "habii-core",
       "source": "./plugins/habii-core",
-      "description": "Base comum: fluxo de trabalho Habii, TDD, entrevista com ADRs, revisor de diff e gate de verificação no Stop."
+      "description": "Base comum: fluxo de trabalho Habii, TDD, entrevista com ADRs, revisores de diff (corretude, qualidade e segurança) e gate de verificação no Stop."
     },
     {
       "name": "habii-ts",

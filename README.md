@@ -4,7 +4,7 @@ Harness da Habii Tech para o Claude Code. Este repositório é um **marketplace 
 
 | Plugin | Status | Conteúdo |
 |---|---|---|
-| `habii-core` | ✅ disponível | Fluxo de trabalho, TDD, entrevista com ADRs, GraphQL (schema e operações), revisor de diff, gate de verificação |
+| `habii-core` | ✅ disponível | Fluxo de trabalho, TDD, entrevista com ADRs, GraphQL (schema e operações), revisores de diff (corretude, qualidade e segurança), gate de verificação |
 | `habii-ts` | ✅ disponível | TypeScript full-stack: React (performance, composição, design, shadcn, browser), Fastify, Prisma |
 | `habii-rails` | ✅ disponível | Rails + graphql-ruby: schemas por público, mutations com `errors`, actions, specs |
 | `habii-mobile` | ✅ disponível | React Native com Expo: performance, testes (RNTL), React Navigation, simulador |
@@ -36,6 +36,8 @@ Dentro do repositório do projeto, rode `/habii-core:habii-setup`. A skill cria:
 **Skills próprias**
 - `habii-workflow` — quando planejar, como verificar, quando delegar e quando limpar o contexto.
 - `habii-setup` — prepara um projeto (só manual).
+- `/habii-core:code-reviewer [base]` — dispara o agent `code-reviewer` no diff (só manual).
+- `/habii-core:security-check [full | base]` — dispara o agent `security-check` no diff ou, com `full`, no repo inteiro (só manual).
 - `habii-apollo-client` — setup do Apollo da casa (endpoint por login, link chain, upload, campo `errors`, codegen), cobrindo Apollo 3.x e 4.x. Fica no core porque web e mobile usam.
 
 **Skills de terceiros** (vendorizadas, ver abaixo)
@@ -45,6 +47,8 @@ Dentro do repositório do projeto, rode `/habii-core:habii-setup`. A skill cria:
 
 **Agents**
 - `reviewer` — revisa o diff em contexto limpo contra o SPEC; só corretude e requisitos.
+- `code-reviewer` — revisa a qualidade do diff: reuso do que já existe no projeto, convenções (CLAUDE.md/ADRs), complexidade desnecessária, testes fracos e checks silenciados.
+- `security-check` — revisão de segurança agnóstica de stack (IDOR/escopo por dono, exposição no GraphQL, injeção, mass assignment, uploads, secrets, tokens no mobile). Modo diff ou `full`; usa `differential-review`, `sharp-edges` e a skill de segurança da stack quando houver. Nunca imprime segredos.
 - `explorer` — exploração somente leitura com Haiku, para não poluir o contexto principal.
 
 **Hook Stop**

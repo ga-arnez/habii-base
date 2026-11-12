@@ -32,7 +32,13 @@ When done, show the evidence: the command you ran and its result. "Should work" 
 
 ## 5. Review in a clean context
 
-Meaningful change → `reviewer` subagent against the SPEC/plan. Fix only what affects correctness or requirements; treat the rest as optional.
+Meaningful change → launch in parallel:
+- `reviewer` — correctness against the SPEC/plan;
+- `code-reviewer` — quality: reuse of existing patterns, conventions, complexity, weak tests.
+
+If the diff touches auth, permissions, external input, uploads, secrets or the GraphQL schema, also run `security-check` (diff mode).
+
+Fix what affects correctness, requirements or security, and `must` quality items; treat the rest as optional.
 
 ## 6. Session hygiene
 
