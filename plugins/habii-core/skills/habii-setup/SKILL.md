@@ -24,7 +24,7 @@ Create it from `templates/verify.sh` with the commands verified in step 1, and `
 Run the script once. If the project is already red (legacy), tell the user and agree on a path: fix it first, or start with a narrower verify.sh.
 
 ## 4. .claude/settings.json
-Ensure (merging with whatever exists) the entries from `templates/settings.json`. In `enabledPlugins`, always enable `habii-core@habii`, `context7@claude-plugins-official` (version-specific library docs; each person authenticates on first use) and `security-guidance@claude-plugins-official` (warns on insecure patterns while editing and reviews the diff on Stop), and add the plugins for the detected stack that already exist in the marketplace:
+Ensure (merging with whatever exists) the entries from `templates/settings.json`. In `enabledPlugins`, always enable `habii-core@habii`, `context7@claude-plugins-official` (version-specific library docs; each person authenticates on first use), `security-guidance@claude-plugins-official` (warns on insecure patterns while editing and reviews the diff on Stop) and `asana@claude-plugins-official` (Asana MCP used by `/habii-core:qa` to read the card's test scenarios; each person runs `/asana:asana-setup` once — Asana V2 requires a personal OAuth app), and add the plugins for the detected stack that already exist in the marketplace:
 - Rails → `habii-rails@habii`
 - TypeScript (React web and/or Fastify) → `habii-ts@habii`
 - Expo → `habii-mobile@habii`, plus Expo's official plugin: add to `extraKnownMarketplaces` the entry `"expo-plugins": { "source": { "source": "github", "repo": "expo/skills" } }` and enable `expo@expo-plugins`
@@ -34,4 +34,4 @@ Ensure (merging with whatever exists) the entries from `templates/settings.json`
 If `package.json` (any workspace) depends on `@trpc/*` or `@tanstack/*`, run `npx @tanstack/intent@latest install` at the root. Those libraries ship their skills inside the npm package, so the guidance matches the installed version; do not vendor them. Show the user the resulting diff.
 
 ## When done
-List the files created/changed and the output of the first `verify.sh` run. Remind the user to commit `.claude/settings.json` and `CLAUDE.md`, and to turn on marketplace auto-update in `/plugin` → Marketplaces.
+List the files created/changed and the output of the first `verify.sh` run. Remind the user to commit `.claude/settings.json` and `CLAUDE.md`, to turn on marketplace auto-update in `/plugin` → Marketplaces, and to run `/asana:asana-setup` once to connect Asana.
