@@ -40,4 +40,13 @@ Relay the subagent's report as it came — do not turn a ❌ or ⚠️ into ✅.
 
 Then ask:
 - whether to **post the result as a comment on the Asana card** (only post after a yes; outward-facing), and
-- for each ❌, whether to investigate/fix now. When fixing, re-run only the failed scenarios afterwards.
+- for each ❌, whether to investigate/fix now.
+
+## 6. Fix (only after a yes)
+The QA context is full of scenarios and screenshots, not code — do not jump straight into the file the report points at. For each ❌:
+1. Load the `habii-core:habii-workflow` skill and follow it.
+2. Investigate the root cause from the report's hint; the hint is a starting point, not the fix.
+3. Before editing, launch the `habii-core:explorer` subagent to find the closest existing pattern for what the fix touches (sibling file, equivalent action/hook/component/query, how the same case is handled elsewhere). State which pattern you will follow, citing `path:line`. Also respect the stack's convention skill when one applies (e.g. `habii-rails:habii-rails`, `habii-core:habii-apollo-client`).
+4. Make the minimal fix that follows that pattern.
+5. Launch the `habii-core:code-reviewer` subagent on the fix and apply its `must` items.
+6. Re-run only the failed scenarios with the `habii-core:qa` subagent, and report again as in step 5.

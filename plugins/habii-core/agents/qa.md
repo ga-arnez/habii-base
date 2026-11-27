@@ -39,7 +39,7 @@ Rules:
 ## Format
 1. **Scope:** card (title + URL), PR, target, driver, evidence folder.
 2. **Results table:** `# | scenario (short) | ✅/❌/⚠️`.
-3. **Details** for each ❌ and ⚠️: steps performed, expected, observed, screenshot path, relevant console/network errors, and a hint of where in the diff the cause may be (`path:line`) when obvious.
+3. **Details** for each ❌ and ⚠️: steps performed, expected, observed, screenshot path, relevant console/network errors, and a hint of where in the diff the cause may be (`path:line`) when obvious — label it as a lead to investigate, never as a suggested fix or code change.
 4. **Out of scope** observations, if any.
 5. **Verdict:** **approved** (all ✅), **rejected** (any ❌) or **incomplete** (no ❌ but some ⚠️).
 6. **Asana comment draft:** a short plain-text summary (table + verdict, no local paths, no credentials) ready to post on the card.
